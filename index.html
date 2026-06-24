@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dibyaraj Sinha - Author</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- React Libraries -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
 
     <style>
         body {
@@ -80,6 +82,13 @@
 
         .book-card:hover {
             transform: rotateY(5deg) scale(1.05);
+        }
+
+        .bengali-title {
+            font-family: "Noto Serif Bengali", serif;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            line-height: 1.4;
         }
 
         .modal {
@@ -241,6 +250,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        const isBengali = (text) => /[\u0980-\u09FF]/.test(text);
         const { useState, useEffect } = React;
 
         // Copy Protection - One-time alert per session
@@ -441,6 +451,14 @@
 
             const books = [
                 {
+                    id: 4,
+                    title: 'সাত মিনিট',
+                    pdfPath: '7-minute.pdf',
+                    cover: 'images/7-minute.jpg',
+                    releaseDate: '2025',
+                    synopsis: 'N/A'
+                },
+                {
                     id: 3,
                     title: 'The Aura',
                     pdfPath: 'the-aura.pdf',
@@ -521,7 +539,12 @@
                                             }}
                                         >
                                         </div>
-                                        <h4 className="text-xl font-playfair text-center mb-2">{book.title}</h4>
+                                        <h4
+                                            className={`text-xl text-center mb-2 ${isBengali(book.title) ? 'bengali-title' : 'font-playfair'
+                                                }`}
+                                        >
+                                            {book.title}
+                                        </h4>
                                         <button
                                             className="btn-hover w-full mt-4 px-6 py-2 bg-transparent rounded-md text-sm"
                                             style={{ color: '#d4af37' }}
@@ -537,7 +560,12 @@
                         {selectedBook && !isReading && (
                             <div className="modal show" onClick={() => setSelectedBook(null)}>
                                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                                    <h3 className="text-3xl font-playfair mb-4">{selectedBook.title}</h3>
+                                    <h3
+                                        className={`text-3xl mb-4 ${isBengali(selectedBook.title) ? 'bengali-title' : 'font-playfair'
+                                            }`}
+                                    >
+                                        {selectedBook.title}
+                                    </h3>
                                     <p className="mb-4" style={{ color: '#b8960e' }}>Released: {selectedBook.releaseDate}</p>
                                     <p className="mb-6 leading-relaxed" style={{ color: '#c4a647' }}>{selectedBook.synopsis}</p>
                                     <button
