@@ -69,36 +69,6 @@ To achieve rapid page load speeds and simple maintenance, the website is built a
 
 ---
 
-## 💻 Local Development
-
-Since this site uses `@babel/standalone` to transpile JSX in the browser, opening the HTML file directly via `file:///` might trigger browser CORS security policy blocks. 
-
-To run the site locally, serve it using a local server:
-
-1.  Make sure you have Node.js installed.
-2.  Run one of the following commands in the project directory:
-    ```bash
-    # Option A: Using npx http-server (Recommended)
-    npx http-server . -p 3000
-
-    # Option B: Using Python
-    python -m http.server 3000
-    ```
-3.  Open `http://localhost:3000` in your web browser.
-
----
-
-## ☁️ Deployment
-
-The project is configured for serverless deployment on **Netlify**:
-1.  Connect your GitHub repository to your Netlify account.
-2.  Configure the build settings:
-    *   **Build command:** *None / Leave blank*
-    *   **Publish directory:** `.` (root directory)
-3.  Deploy! Netlify will serve the static files and resolve `index.html` automatically.
-
----
-
 ## ⚖️ Rights & Permissions
 
 © 2025-2026 Dibyaraj Sinha. All rights reserved. 
