@@ -2,8 +2,6 @@
 
 A premium, interactive personal portfolio and digital library for the published works of **Dibyaraj Sinha**, featuring a custom in-browser PDF reading experience, reading progress tracking, and text protection.
 
-✨ **Live Website:** [dibyaraj-sinha.netlify.app](https://dibyarajsinha.com) *(or your Netlify domain)*
-
 ---
 
 ## 🎨 Design & Aesthetic
